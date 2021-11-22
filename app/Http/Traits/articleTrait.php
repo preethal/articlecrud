@@ -41,7 +41,6 @@ trait articleTrait
         //
 
         $articles = $this->articleRepository->latest()->paginate(5);
-
        return view('home', [
            'articles' => $articles
        ]);  
@@ -56,7 +55,6 @@ trait articleTrait
      */
     public function add()
     {
-
     // To create articles
     $category = Category::all();
     $tag      =Tag::all();

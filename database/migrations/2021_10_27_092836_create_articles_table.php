@@ -17,12 +17,13 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('title', 100)->unique();
             $table->string('content', 2000);
-            $table->string('category', 30);
+            $table->unsignedBigInteger('category_id');
+                        
+
             $table->text('tag',100);
             $table->string('slug', 200)->unique();
-            $table->timestamps();
-            
-            $table->foreignId('tag_id')->constrained();
+            $table->timestamps();        
+           
             $table->foreign('category_id')
             ->references('id')
             ->on('categories')

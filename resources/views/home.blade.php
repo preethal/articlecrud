@@ -2,10 +2,18 @@
 
 @section('content')
 <div class="container">
+     @if(\Session::has('error'))
+        <div class="alert alert-danger">
+          {{\Session::get('error')}}
+        </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
+                 <div class="panel-body">
+                    <a href="{{url('admin/routes')}}">Admin</a>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -27,7 +35,7 @@
 <table class="table table-bordered table-responsive-lg">
 <tr>
 <td>
-<form action="{{ url('add')}}" method="post" enctype="multipart/form-data">
+<form action="{{ url('/add')}}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 <button type="submit"> Create Article </button>
 </form>  

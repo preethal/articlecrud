@@ -14,19 +14,26 @@ use App\Http\Controllers\ArticleController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::group(['prefix'=>''], function(){  
+Route::get('/home', 'ArticleController@index')->name('home');
+Route::post('/add', 'ArticleController@add')->name('add');
+Route::post('/store', 'ArticleController@store')->name('store');
+Route::get('edit/{id}',  'ArticleController@edit')->name('edit');
+Route::patch('update/{id}', 'ArticleController@update')->name('update');
+Route::delete('destroy/{id}', 'ArticleController@destroy')->name('destroy');
+});
 
 Auth::routes();
-Route::post('/add', [App\Http\Controllers\ArticleController::class, 'add'])->name('home');
-
+/*Route::post('/add', [App\Http\Controllers\ArticleController::class, 'add'])->name('home');
 Route::get('/home', [App\Http\Controllers\ArticleController::class, 'index'])->name('home');
 Route::post('/store', [App\Http\Controllers\ArticleController::class, 'store'])->name('store');
 Route::get('edit/{id}', [App\Http\Controllers\ArticleController::class, 'edit'])->name('edit');
 Route::patch('update/{id}', [App\Http\Controllers\ArticleController::class, 'update'])->name('update');
-Route::delete('destroy/{id}', [App\Http\Controllers\ArticleController::class, 'destroy'])->name('destroy');
+Route::delete('destroy/{id}', [App\Http\Controllers\ArticleController::class, 'destroy'])->name('destroy');*/
 
 
 
