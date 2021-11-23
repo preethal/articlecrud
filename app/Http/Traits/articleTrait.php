@@ -12,6 +12,8 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
 use DB;
+use App\Http\Requests\StoreArticle;
+
 
 
 trait articleTrait
@@ -67,13 +69,13 @@ trait articleTrait
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArticle $request)
     {
 
-            Validator::make($request->all(), [
+            /*Validator::make($request->all(), [
                 'title' => 'required',
                 'content' => 'required',
-            ])->validate();
+            ])->validate();*/
            
             $input = $request->all();
                //save articles to database

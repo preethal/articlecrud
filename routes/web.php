@@ -18,7 +18,7 @@ Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::group(['prefix'=>''], function(){  
+Route::group(['middleware' => ['web']], function(){  
 Route::get('/home', 'ArticleController@index')->name('home');
 Route::post('/add', 'ArticleController@add')->name('add');
 Route::post('/store', 'ArticleController@store')->name('store');
